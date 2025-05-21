@@ -15,10 +15,9 @@ public class Location {
 
     public Location(){}
 
-    public Location( String nome, String citta, List<Evento> eventi) {
+    public Location( String nome, String citta) {
         this.nome = nome;
         this.citta = citta;
-        this.eventi = eventi;
     }
 
     public int getId() {
