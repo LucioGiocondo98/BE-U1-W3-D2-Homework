@@ -15,20 +15,20 @@ public class Persona {
     private LocalDate dataNascita;
     @Enumerated(EnumType.STRING)
     private Sesso sesso;
-    @OneToMany(mappedBy = "persona",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "persona")
     private List<Partecipazione> partecipazioni;
 
     public Persona(){
 
     }
 
-    public Persona( String nome, String cognome, String email, LocalDate dataNascita, Sesso sesso, List<Partecipazione> partecipazioni) {
+    public Persona( String nome, String cognome, String email, LocalDate dataNascita, Sesso sesso) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.dataNascita = dataNascita;
         this.sesso = sesso;
-        this.partecipazioni = partecipazioni;
+
     }
 
     public int getId() {

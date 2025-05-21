@@ -18,13 +18,13 @@ public class Evento {
     @OneToOne
     @JoinColumn(name = "location_id")
     private Location location;
-    @OneToMany(mappedBy = "evento",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "evento")
     private List<Partecipazione> partecipazioni;
 
 
     public Evento(){}
 
-    public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location, List<Partecipazione> partecipazioni) {
+    public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location) {
 
         this.titolo = titolo;
         this.dataEvento = dataEvento;
@@ -32,7 +32,6 @@ public class Evento {
         this.tipoEvento = tipoEvento;
         this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
         this.location = location;
-        this.partecipazioni = partecipazioni;
     }
 
     public int getId() {
