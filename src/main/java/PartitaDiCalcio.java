@@ -1,22 +1,24 @@
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
 @DiscriminatorValue("PartitaCalcio")
 @NamedQueries({
-        @NamedQuery(name = "PartitaDiCalcio.getPartitaVincenteInCasa",query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente= p.squadraDiCasa"),
-        @NamedQuery(name = "PartitaDiCalcio.getPartitaVincenteInTrasferta",query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente = p.squadraOspite"),
-        @NamedQuery(name = "PartitaDiCalcio.getPartitePareggiate", query = "SELECT p FROM PartitaDiCalcio p WHERE p.numeroGolSquadraDiCasa = p.numeroGolSquadraOspite")
+        @NamedQuery(name = "getPartitaVincenteInCasa",query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente= p.squadraDiCasa"),
+        @NamedQuery(name = "getPartitaVincenteInTrasferta",query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadraVincente = p.squadraOspite"),
+        @NamedQuery(name = "getPartitePareggiate", query = "SELECT p FROM PartitaDiCalcio p WHERE p.numeroGolSquadraDiCasa = p.numeroGolSquadraOspite")
 })
 public class PartitaDiCalcio extends Evento {
-private String squadraDiCasa;
+@Column(name = "squadra_casa")
+    private String squadraDiCasa;
+@Column(name = "squadra_ospite")
     private String squadraOspite;
+@Column(name = "squadra_vincente")
     private String squadraVincente;
+@Column(name = "numero_gol_squadra_di_casa")
     private int numeroGolSquadraDiCasa;
+@Column(name = "numero_gol_squadra_ospite")
     private int getNumeroGolSquadraOspite;
 
     public PartitaDiCalcio(){}

@@ -1,25 +1,27 @@
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @DiscriminatorValue("GaraAtletica")
+@Table(name = "gare_di_atletica")
 public class GaraDiAtletica extends Evento {
 @ManyToMany
-    private List<Persona> atleti;
+@JoinTable(name = "gare_atleti",joinColumns = @JoinColumn(name = "gara_di_atletica_id")
+        ,inverseJoinColumns =@JoinColumn(name = "persona_id") )
+    private Set<Persona> atleti;
 @ManyToOne
+@JoinColumn(name = "vincitore")
     private Persona vincitore;
 
 
 public GaraDiAtletica(){}
 
-    public GaraDiAtletica(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti, Persona vincitore) {
+    public GaraDiAtletica(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti) {
         super(titolo, dataEvento, descrizione, tipoEvento, numeroMassimoPartecipanti);
-        this.vincitore = vincitore;
+
     }
 
     public GaraDiAtletica(Persona vincitore) {
@@ -34,11 +36,11 @@ public GaraDiAtletica(){}
         this.vincitore = vincitore;
     }
 
-    public List<Persona> getAtleti() {
+    public Set<Persona> getAtleti() {
         return atleti;
     }
 
-    public void setAtleti(List<Persona> atleti) {
+    public void setAtleti(Set<Persona> atleti) {
         this.atleti = atleti;
     }
 

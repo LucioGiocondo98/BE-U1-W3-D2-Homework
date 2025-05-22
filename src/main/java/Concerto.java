@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "concerti")
 @DiscriminatorValue("Concerto")
 public class Concerto extends Evento {
     @Enumerated(EnumType.STRING)

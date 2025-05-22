@@ -34,8 +34,8 @@ public class EventoDAO {
     }
     public List<Concerto> getConcertiInStreaming(boolean inStreaming) {
         TypedQuery<Concerto> query = em.createQuery(
-                "SELECT c FROM Concerto c WHERE c.inStreaming = :streaming", Concerto.class);
-        query.setParameter("streaming", inStreaming);
+                "SELECT c FROM Concerto c WHERE c.inStreaming = :inStreaming", Concerto.class);
+        query.setParameter("inStreaming", inStreaming);
         return query.getResultList();
     }
 
@@ -47,16 +47,16 @@ public class EventoDAO {
     }
 
     public List<PartitaDiCalcio>getPartiteVinteInCasa(){
-        TypedQuery<PartitaDiCalcio> query= em.createNamedQuery("PartitaDiCalcio.getPartiteVinteInCasa",PartitaDiCalcio.class);
+        TypedQuery<PartitaDiCalcio> query= em.createNamedQuery("getPartiteVinteInCasa",PartitaDiCalcio.class);
         return query.getResultList();
     }
 
     public List<PartitaDiCalcio> getPartiteVinteInTrasferta() {
-        TypedQuery<PartitaDiCalcio> query = em.createNamedQuery("PartitaDiCalcio.getPartiteVinteInTrasferta", PartitaDiCalcio.class);
+        TypedQuery<PartitaDiCalcio> query = em.createNamedQuery("getPartiteVinteInTrasferta", PartitaDiCalcio.class);
         return query.getResultList();
     }
     public List<PartitaDiCalcio> getPartitePareggiate() {
-        TypedQuery<PartitaDiCalcio> query = em.createNamedQuery("PartitaDiCalcio.getPartitePareggiate", PartitaDiCalcio.class);
+        TypedQuery<PartitaDiCalcio> query = em.createNamedQuery("getPartitePareggiate", PartitaDiCalcio.class);
         return query.getResultList();
     }
 

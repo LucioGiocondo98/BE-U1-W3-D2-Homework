@@ -5,9 +5,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "eventi")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "tipo_evento_speciale", discriminatorType = DiscriminatorType.STRING)
-public class Evento {
+public abstract class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
