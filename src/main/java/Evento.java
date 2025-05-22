@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table (name = "eventi")
+@Table(name = "eventi")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_evento_speciale", discriminatorType = DiscriminatorType.STRING)
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
