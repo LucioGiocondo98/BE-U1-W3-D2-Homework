@@ -59,7 +59,19 @@ public class EventoDAO {
         TypedQuery<PartitaDiCalcio> query = em.createNamedQuery("getPartitePareggiate", PartitaDiCalcio.class);
         return query.getResultList();
     }
+public List<GaraDiAtletica>getGaraDiAtleticaPerVincitore(Persona vincitore){
+        TypedQuery<GaraDiAtletica> query= em.createQuery("select g from GaraDiAtletica g where g.vincitore = :vincitore",GaraDiAtletica.class);
+query.setParameter("vincitore",vincitore);
+return query.getResultList();
+    }
 
-
-
+    public List<GaraDiAtletica>getGaraDiAtleticaPerPartecipante(Persona partecipante){
+        TypedQuery<GaraDiAtletica> query= em.createQuery("select g from GaraDiAtletica g where :partecipante MEMBER OF g.atleti",GaraDiAtletica.class);
+        query.setParameter("partecipante",partecipante);
+        return query.getResultList();
+    }
+    public List<Evento> getEventiSoldOut(){
+    TypedQuery<Evento> query= em.createQuery("select e from Evento e ehere e.partecipazioni.size()=e.NumeroMassimoPartecipanti",Evento.class);
+    return query.getResultList();
+    }
 }
